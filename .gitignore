@@ -1,6 +1,10 @@
 # Import cache
 .import/
 
+mono_crash.*
+
+*.dmg
+
 # Binaries
 bin/
 build/
