@@ -49,6 +49,10 @@
 			"text": "I'm glad to hear it"
 		},
 		{
+			"emit_signal": "spawnobject_test",
+			"event_id": "dialogic_040"
+		},
+		{
 			"choice": "Bad",
 			"condition": "",
 			"definition": "",
