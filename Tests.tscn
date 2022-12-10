@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://CameraGimbal.cs" type="Script" id=1]
 [ext_resource path="res://InnerGimbal.cs" type="Script" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://CharacterMovement.cs" type="Script" id=5]
 [ext_resource path="res://Billboard.cs" type="Script" id=6]
 [ext_resource path="res://Textures/Sprites/goblin_small.png" type="Texture" id=7]
-[ext_resource path="res://Textures/Enc/floor.jpg" type="Texture" id=8]
+[ext_resource path="res://Textures/Enc/floor_lo.jpg" type="Texture" id=8]
+[ext_resource path="res://Textures/Enc/wall.png" type="Texture" id=9]
+[ext_resource path="res://DialogueController.cs" type="Script" id=10]
 
 [sub_resource type="PlaneMesh" id=2]
 
@@ -23,21 +25,34 @@ flags_transparent = true
 flags_unshaded = true
 albedo_texture = ExtResource( 7 )
 
+[sub_resource type="CylinderShape" id=13]
+
 [sub_resource type="Environment" id=1]
 
 [sub_resource type="PhysicsMaterial" id=6]
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="SpatialMaterial" id=14]
+albedo_texture = ExtResource( 9 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 8, 1, 8 )
+uv2_scale = Vector3( 8, 1, 8 )
 
-[sub_resource type="ConvexPolygonShape" id=8]
-points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1 )
+[sub_resource type="CubeMesh" id=7]
+material = SubResource( 14 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=15]
+points = PoolVector3Array( 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5 )
 
 [sub_resource type="SpatialMaterial" id=10]
 flags_transparent = true
 flags_unshaded = true
 albedo_texture = ExtResource( 4 )
 
-[sub_resource type="CubeMesh" id=12]
+[sub_resource type="CylinderShape" id=12]
 
 [node name="Scene" type="Spatial"]
 
@@ -47,10 +62,12 @@ mesh = SubResource( 2 )
 skeleton = NodePath("../CameraGimbal/InnerGimbal/Camera")
 material/0 = SubResource( 11 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 28.3, 32.74 )
+[node name="DirectionalLight" type="OmniLight" parent="."]
+transform = Transform( 0.984808, -0.122788, 0.122788, 0, 0.707107, 0.707107, -0.173648, -0.696364, 0.696364, 1.15097, 21.9976, -0.604782 )
 shadow_enabled = true
-directional_shadow_max_distance = 189.5
+omni_range = 37.608
+omni_attenuation = 1.07178
+omni_shadow_mode = 0
 
 [node name="Character" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 2.44021, 0 )
@@ -58,7 +75,7 @@ script = ExtResource( 5 )
 max_speed = 30
 
 [node name="CollisionShape" type="CollisionShape" parent="Character"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05652, -3.14867e-08 )
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 1.05652, -3.14867e-08 )
 shape = SubResource( 5 )
 
 [node name="CharacterController" type="Spatial" parent="Character"]
@@ -76,6 +93,12 @@ mesh = SubResource( 3 )
 skeleton = NodePath("../../../..")
 material/0 = SubResource( 9 )
 
+[node name="Interact" type="Area" parent="Character"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1.00673, -3.00028e-08 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Character/Interact"]
+shape = SubResource( 13 )
+
 [node name="CameraGimbal" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 0, 0 )
 script = ExtResource( 1 )
@@ -91,7 +114,7 @@ environment = SubResource( 1 )
 [node name="Walls" type="Spatial" parent="."]
 
 [node name="StaticBody" type="StaticBody" parent="Walls"]
-transform = Transform( 23, 0, 0, 0, 6, 0, 0, 0, 1, -0.111423, 7.93736, -15.8369 )
+transform = Transform( 46, 0, 0, 0, 10, 0, 0, 0, 1, 0.0295315, 7.16495, -15.2377 )
 physics_material_override = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody"]
@@ -100,9 +123,46 @@ skeleton = NodePath("../..")
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody"]
-shape = SubResource( 8 )
+shape = SubResource( 15 )
 
-[node name="Interactable" type="Spatial" parent="."]
+[node name="StaticBody4" type="StaticBody" parent="Walls"]
+transform = Transform( 46, 0, 0, 0, 3, 0, 0, 0, 1, 0.0295315, 4.13937, 14.4448 )
+physics_material_override = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270561, 0.553062 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody4"]
+shape = SubResource( 15 )
+
+[node name="StaticBody2" type="StaticBody" parent="Walls"]
+transform = Transform( -1.31134e-06, 0, 1, 0, 10, 0, -30, 0, -4.37114e-08, -22.8944, 7.16495, -0.457992 )
+physics_material_override = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody2"]
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody2"]
+shape = SubResource( 15 )
+
+[node name="StaticBody3" type="StaticBody" parent="Walls"]
+transform = Transform( -1.31134e-06, 0, 1, 0, 10, 0, -30, 0, -4.37114e-08, 22.3689, 7.16495, -0.457992 )
+physics_material_override = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody3"]
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody3"]
+shape = SubResource( 15 )
+
+[node name="Interactable" type="Spatial" parent="." groups=["computer"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2758, 2.21128, -12.6831 )
 
 [node name="Billboard" type="Spatial" parent="Interactable"]
@@ -115,7 +175,13 @@ mesh = SubResource( 3 )
 skeleton = NodePath("../../..")
 material/0 = SubResource( 10 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.27735, 4.28407, 5.76649 )
-mesh = SubResource( 12 )
-material/0 = null
+[node name="Area" type="Area" parent="Interactable"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Interactable/Area"]
+transform = Transform( 5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 2.18826, 0 )
+shape = SubResource( 12 )
+
+[node name="DialogueController" type="Spatial" parent="."]
+script = ExtResource( 10 )
+
+[connection signal="dialogSignal" from="Character" to="DialogueController" method="_on_Character_dialogSignal"]

@@ -9,12 +9,20 @@ public class CharacterMovement : KinematicBody
 	
 	private Spatial camera_gimbal = null;
 	private Spatial char_jiggler = null;
+	private Area char_interact = null;
+	private Spatial dialog_controller = null;
+	
+	[Signal] public delegate void dialogSignal(String name);
+
 	
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         camera_gimbal = GetNode<Spatial>("/root/Scene/CameraGimbal");
 		char_jiggler = GetNode<Spatial>("Billboard/Jiggler");
+		char_interact = GetNode<Area>("Interact");
+		dialog_controller = GetNode<Spatial>("/root/Scene/DialogueController");
+		rnd = new RandomNumberGenerator();
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,15 +51,16 @@ public class CharacterMovement : KinematicBody
 	private bool jiggle_left = true;
 	
     public Vector3 velocity = new Vector3();
-	
+	private bool interacting = false;
 	
 
-	Random rnd = new Random();
+	RandomNumberGenerator rnd = null;
 
 
     public void GetInput()
     {
 		move_lock = false;
+		interacting = false;
         velocity = new Vector3();
 
         if (Input.IsActionPressed("move_right")){
@@ -74,6 +83,10 @@ public class CharacterMovement : KinematicBody
             velocity.z -= 1;
 		}
 		
+		if (Input.IsActionPressed("interact")){
+			interacting = true;
+		}
+		
 		velocity = velocity.Rotated(new Vector3(0,1,0),camera_gimbal.GetRotation().y);
 		
         
@@ -82,6 +95,16 @@ public class CharacterMovement : KinematicBody
 	public void MeshJiggle()
 	{
 		
+	}
+	
+	public override void _Process(float delta){
+		foreach(Area area in char_interact.GetOverlappingAreas()){
+			if(area.GetParent().IsInGroup("computer")){
+				if(interacting){
+					EmitSignal(nameof(dialogSignal),"Test");
+				}
+			}
+		}
 	}
 
     public override void _PhysicsProcess(float delta)
@@ -114,7 +137,7 @@ public class CharacterMovement : KinematicBody
 		if(speed >= max_speed){
 			if(jiggle_height < jiggle_snap){
 				jiggle_accel = jiggle_jerk;
-				float xfac =jiggle_randomness*( (float) rnd.NextDouble());
+				float xfac =jiggle_randomness*( (float) rnd.Randf());
 				
 				if(jiggle_left){
 					xfac = -xfac;

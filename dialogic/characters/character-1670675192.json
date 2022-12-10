@@ -1,0 +1,25 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1670675192.json",
+	"mirror_portraits": false,
+	"name": "Dandy 3000",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Textures/Sprites/robot_cowboy.png"
+		},
+		{
+			"name": "Hat Tip",
+			"path": "res://Textures/Sprites/robot_cowboy_2.png"
+		}
+	],
+	"scale": 50,
+	"theme": ""
+}

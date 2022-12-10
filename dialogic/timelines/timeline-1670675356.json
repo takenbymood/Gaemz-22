@@ -1,0 +1,77 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Howdy partner"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "Hat Tip",
+			"question": "How ya doin?"
+		},
+		{
+			"choice": "Fine",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "I'm glad to hear it"
+		},
+		{
+			"choice": "Bad",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Well that sucks"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1670675356.json",
+		"name": "Test"
+	}
+}
