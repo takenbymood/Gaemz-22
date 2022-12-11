@@ -8,11 +8,13 @@ public class ObjectSpawner : Spatial
     // private string b = "text";
 	
 	private Spatial self = null;
+	RandomNumberGenerator rnd = null;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
 		self = GetNode<Spatial>(".");
+		rnd = new RandomNumberGenerator();
     }
 	
 	
@@ -23,6 +25,7 @@ public class ObjectSpawner : Spatial
 			PackedScene testScene = (PackedScene)ResourceLoader.Load("res://Scenes/PhysicsObject.tscn");
 			RigidBody newTest = (RigidBody)testScene.Instance();
 			AddChild(newTest);
+			newTest.Translate(new Vector3(2.0f-4.0f*rnd.Randf(),0,2.0f*rnd.Randf()));
 		}
 	}
 
