@@ -9,21 +9,21 @@
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": 100,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://Textures/Sprites/robot_cowboy_1.png"
+			"path": "res://Textures/Sprites/cowboy_scene_1.png"
 		},
 		{
 			"name": "Hat Tip",
-			"path": "res://Textures/Sprites/robot_cowboy_2(1).png"
+			"path": "res://Textures/Sprites/cowboy_scene_2.png"
 		},
 		{
 			"name": "Manana",
-			"path": "res://Textures/Sprites/robot_cowboy_3.png"
+			"path": "res://Textures/Sprites/cowboy_scene_3.png"
 		}
 	],
-	"scale": 50,
+	"scale": 47,
 	"theme": ""
 }

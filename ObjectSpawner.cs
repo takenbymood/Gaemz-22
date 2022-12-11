@@ -20,10 +20,22 @@ public class ObjectSpawner : Spatial
 	
 	private void _on_DialogueController_objectSpawnSignal(String name)
 	{
+		RigidBody newTest = null;
 	    // Replace with function body.
-		if(name.Equals("test")){
-			PackedScene testScene = (PackedScene)ResourceLoader.Load("res://Scenes/PhysicsObject.tscn");
-			RigidBody newTest = (RigidBody)testScene.Instance();
+		if(name.Equals("hat1")){
+			PackedScene testScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hat.tscn");
+			newTest = (RigidBody)testScene.Instance();
+
+		}
+		else if(name.Equals("hat2")){
+			PackedScene testScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hat2.tscn");
+			newTest = (RigidBody)testScene.Instance();
+		}
+		else if(name.Equals("hat3")){
+			PackedScene testScene = (PackedScene)ResourceLoader.Load("res://Scenes/Hat3.tscn");
+			newTest = (RigidBody)testScene.Instance();
+		}
+		if(newTest != null){
 			AddChild(newTest);
 			newTest.Translate(new Vector3(2.0f-4.0f*rnd.Randf(),0,2.0f*rnd.Randf()));
 		}

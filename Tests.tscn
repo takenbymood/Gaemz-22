@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://CameraGimbal.cs" type="Script" id=1]
 [ext_resource path="res://InnerGimbal.cs" type="Script" id=2]
@@ -11,11 +11,11 @@
 [ext_resource path="res://Textures/Enc/wall.png" type="Texture" id=9]
 [ext_resource path="res://DialogueController.cs" type="Script" id=10]
 [ext_resource path="res://ObjectSpawner.cs" type="Script" id=11]
-[ext_resource path="res://Scenes/PhysicsObject.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Textures/Skybox/starfield-17.png" type="Texture" id=13]
 [ext_resource path="res://Textures/Enc/fire.jpg" type="Texture" id=14]
 [ext_resource path="res://Textures/Sprites/computer.png" type="Texture" id=15]
 [ext_resource path="res://Textures/Sprites/poster.png" type="Texture" id=16]
+[ext_resource path="res://Textures/Sprites/bubble.png" type="Texture" id=17]
 
 [sub_resource type="CylinderShape" id=5]
 
@@ -25,6 +25,11 @@
 flags_transparent = true
 flags_unshaded = true
 albedo_texture = ExtResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=30]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 17 )
 
 [sub_resource type="CylinderShape" id=13]
 
@@ -132,6 +137,16 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../../../..")
 material/0 = SubResource( 9 )
+
+[node name="InteractIcon" type="Spatial" parent="Character"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72433, 4.35368, -1.2975e-07 )
+script = ExtResource( 6 )
+
+[node name="Mesh" type="MeshInstance" parent="Character/InteractIcon"]
+transform = Transform( 3, 0, 0, 0, 2.5, 0, 0, 0, 3, 0, 0, 0 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 30 )
 
 [node name="Interact" type="Area" parent="Character"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 1.00673, -3.00028e-08 )
@@ -311,8 +326,6 @@ material/0 = SubResource( 11 )
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 transform = Transform( 23, 0, 0, 0, 1, 0, 0, 0, 15, 0, 2.4385, 0 )
 shape = SubResource( 17 )
-
-[node name="PhysicsObject" parent="." instance=ExtResource( 12 )]
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, -3.36581, 12.8179, 0 )

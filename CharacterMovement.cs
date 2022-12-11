@@ -11,6 +11,7 @@ public class CharacterMovement : KinematicBody
 	private Spatial char_jiggler = null;
 	private Area char_interact = null;
 	private Spatial dialog_controller = null;
+	private MeshInstance bubblemesh = null;
 	
 	[Signal] public delegate void dialogSignal(String name);
 
@@ -23,6 +24,7 @@ public class CharacterMovement : KinematicBody
 		char_interact = GetNode<Area>("Interact");
 		dialog_controller = GetNode<Spatial>("/root/Scene/DialogueController");
 		rnd = new RandomNumberGenerator();
+		bubblemesh = GetNode<MeshInstance>("InteractIcon/Mesh");
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -103,8 +105,10 @@ public class CharacterMovement : KinematicBody
 	}
 	
 	public override void _Process(float delta){
+		bubblemesh.Visible = false;
 		foreach(Area area in char_interact.GetOverlappingAreas()){
 			if(area.GetParent().IsInGroup("computer")){
+				bubblemesh.Visible = true;
 				if(interacting){
 					EmitSignal(nameof(dialogSignal),"Test");
 				}

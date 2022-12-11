@@ -160,7 +160,7 @@
 			"text": "Here's a hat for you, enjoy wearin' it kiddo"
 		},
 		{
-			"emit_signal": "spawnobject_test",
+			"emit_signal": "spawnobject_hat1",
 			"event_id": "dialogic_040"
 		},
 		{
@@ -233,7 +233,7 @@
 			"text": "Here's one of my old hats for the road. Treat it kindly, kid."
 		},
 		{
-			"emit_signal": "spawnobject_test",
+			"emit_signal": "spawnobject_hat2",
 			"event_id": "dialogic_040"
 		},
 		{
@@ -303,7 +303,7 @@
 			"text": "I'll send one over to that there atom fabricator, take it with my regards"
 		},
 		{
-			"emit_signal": "spawnobject_test",
+			"emit_signal": "spawnobject_hat3",
 			"event_id": "dialogic_040"
 		},
 		{
