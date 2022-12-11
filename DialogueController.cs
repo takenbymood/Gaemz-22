@@ -11,6 +11,8 @@ public class DialogueController : Spatial
 	private bool chatting = false;
 	
 	[Signal] public delegate void objectSpawnSignal(String name);
+	[Signal] public delegate void lockControls();
+	[Signal] public delegate void unlockControls();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -23,6 +25,7 @@ public class DialogueController : Spatial
 		dialog.Connect("timeline_end", this, nameof(_on_timeline_end));
 		dialog.Connect("dialogic_signal", this, nameof(_dialogic_event));
 		AddChild(dialog);
+		EmitSignal(nameof(lockControls));
 	}
 
 
@@ -56,6 +59,7 @@ public class DialogueController : Spatial
 	private void _on_timeline_end(String name)
 	{
 		chatting = false;
+		EmitSignal(nameof(unlockControls));
 	}
 	
 }

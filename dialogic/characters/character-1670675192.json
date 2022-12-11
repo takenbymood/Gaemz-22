@@ -13,11 +13,15 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://Textures/Sprites/robot_cowboy.png"
+			"path": "res://Textures/Sprites/robot_cowboy_1.png"
 		},
 		{
 			"name": "Hat Tip",
-			"path": "res://Textures/Sprites/robot_cowboy_2.png"
+			"path": "res://Textures/Sprites/robot_cowboy_2(1).png"
+		},
+		{
+			"name": "Manana",
+			"path": "res://Textures/Sprites/robot_cowboy_3.png"
 		}
 	],
 	"scale": 50,

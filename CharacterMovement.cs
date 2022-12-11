@@ -53,6 +53,8 @@ public class CharacterMovement : KinematicBody
     public Vector3 velocity = new Vector3();
 	private bool interacting = false;
 	
+	private bool control_lock = false;
+	
 
 	RandomNumberGenerator rnd = null;
 
@@ -62,29 +64,32 @@ public class CharacterMovement : KinematicBody
 		move_lock = false;
 		interacting = false;
         velocity = new Vector3();
-
-        if (Input.IsActionPressed("move_right")){
-			move_lock = true;
-            velocity.x += 1;
-		}
-
-        if (Input.IsActionPressed("move_left")){
-			move_lock = true;
-            velocity.x -= 1;
-		}
-
-        if (Input.IsActionPressed("move_down")){
-			move_lock = true;
-            velocity.z += 1;
-		}
-
-        if (Input.IsActionPressed("move_up")){
-			move_lock = true;
-            velocity.z -= 1;
-		}
 		
-		if (Input.IsActionPressed("interact")){
-			interacting = true;
+		if(!control_lock){
+
+	        if (Input.IsActionPressed("move_right")){
+				move_lock = true;
+	            velocity.x += 1;
+			}
+
+	        if (Input.IsActionPressed("move_left")){
+				move_lock = true;
+	            velocity.x -= 1;
+			}
+
+	        if (Input.IsActionPressed("move_down")){
+				move_lock = true;
+	            velocity.z += 1;
+			}
+
+	        if (Input.IsActionPressed("move_up")){
+				move_lock = true;
+	            velocity.z -= 1;
+			}
+			
+			if (Input.IsActionPressed("interact")){
+				interacting = true;
+			}
 		}
 		
 		velocity = velocity.Rotated(new Vector3(0,1,0),camera_gimbal.GetRotation().y);
@@ -168,5 +173,19 @@ public class CharacterMovement : KinematicBody
 		
 		velocity = MoveAndSlide(velocity);
     }
+	
+	private void _on_DialogueController_lockControls()
+	{
+	    control_lock = true;
+	}
+
+
+	private void _on_DialogueController_unlockControls()
+	{
+	    control_lock = false;
+	}
 
 }
+
+
+

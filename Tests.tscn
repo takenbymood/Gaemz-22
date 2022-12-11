@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://CameraGimbal.cs" type="Script" id=1]
 [ext_resource path="res://InnerGimbal.cs" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://DialogueController.cs" type="Script" id=10]
 [ext_resource path="res://ObjectSpawner.cs" type="Script" id=11]
 [ext_resource path="res://Scenes/PhysicsObject.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Textures/Skybox/starfield-17.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Enc/fire.jpg" type="Texture" id=14]
 
 [sub_resource type="CylinderShape" id=5]
 
@@ -24,7 +26,13 @@ albedo_texture = ExtResource( 7 )
 
 [sub_resource type="CylinderShape" id=13]
 
+[sub_resource type="PanoramaSky" id=20]
+panorama = ExtResource( 13 )
+
 [sub_resource type="Environment" id=1]
+background_mode = 2
+background_sky = SubResource( 20 )
+background_sky_orientation = Basis( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1 )
 
 [sub_resource type="PhysicsMaterial" id=6]
 
@@ -60,6 +68,19 @@ albedo_texture = ExtResource( 8 )
 points = PoolVector3Array( -1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1 )
 
 [sub_resource type="BoxShape" id=19]
+
+[sub_resource type="SpatialMaterial" id=21]
+albedo_texture = ExtResource( 14 )
+emission_enabled = true
+emission = Color( 0.654902, 0.364706, 0.152941, 1 )
+emission_energy = 0.42
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CapsuleMesh" id=22]
+material = SubResource( 21 )
+
+[sub_resource type="CylinderMesh" id=23]
 
 [node name="Scene" type="Spatial"]
 
@@ -119,6 +140,25 @@ transform = Transform( 46, 0, 0, 0, 10, 0, 0, 0, 1, 0.0295315, 7.16495, -15.2377
 physics_material_override = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody"]
+transform = Transform( 0.4, 0, 0, 0, 1, 0, 0, 0, 1, -0.307833, 0, 0 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Walls/StaticBody"]
+transform = Transform( 0.4, 0, 0, 0, 1, 0, 0, 0, 1, 0.284725, 0, 0 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Walls/StaticBody"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.00950871, -0.433635, 0 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="Walls/StaticBody"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.00950871, 0.396796, 0 )
 mesh = SubResource( 7 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -156,6 +196,25 @@ transform = Transform( -1.31134e-06, 0, 1, 0, 10, 0, -30, 0, -4.37114e-08, 22.36
 physics_material_override = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody3"]
+transform = Transform( 0.6, 0, 0, 0, 1, 0, 0, 0, 1, 0.177464, 0, 0 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Walls/StaticBody3"]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, -2.84217e-14, 0, 1, -0.397928, 0, 0 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Walls/StaticBody3"]
+transform = Transform( 0.2, 0, 1.42109e-13, 0, 0.2, 0, -5.68434e-14, 0, 1, -0.199504, -0.427836, 0 )
+mesh = SubResource( 7 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 14 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Walls/StaticBody3"]
+transform = Transform( 0.2, 0, 1.42109e-13, 0, 0.2, 0, 0, 0, 1, -0.200463, 0.397375, 0.00609207 )
 mesh = SubResource( 7 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 14 )
@@ -222,5 +281,29 @@ transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, -3.36581, 12.8179, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/StaticBody"]
 shape = SubResource( 19 )
 
+[node name="Spatial2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0043, 4.14397, 0 )
+
+[node name="CPUParticles" type="CPUParticles" parent="Spatial2"]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0 )
+amount = 50
+mesh = SubResource( 22 )
+direction = Vector3( -1, 0, 0 )
+spread = 16.42
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 11.6
+initial_velocity_random = 0.04
+angular_velocity_random = 0.66
+angle = -527.1
+angle_random = 0.33
+color = Color( 0.733333, 0.466667, 0.152941, 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial2"]
+transform = Transform( -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0, 3, -2.05887, -0.0339413, 0.0633774 )
+mesh = SubResource( 23 )
+material/0 = null
+
 [connection signal="dialogSignal" from="Character" to="DialogueController" method="_on_Character_dialogSignal"]
+[connection signal="lockControls" from="DialogueController" to="Character" method="_on_DialogueController_lockControls"]
 [connection signal="objectSpawnSignal" from="DialogueController" to="ObjectSpawner" method="_on_DialogueController_objectSpawnSignal"]
+[connection signal="unlockControls" from="DialogueController" to="Character" method="_on_DialogueController_unlockControls"]
