@@ -28,15 +28,21 @@
 		},
 		{
 			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "The name's Dandy 3000"
+		},
+		{
+			"character": "character-1670675192.json",
 			"event_id": "dialogic_010",
 			"options": [
 
 			],
-			"portrait": "Hat Tip",
-			"question": "How ya doin?"
+			"portrait": "Default",
+			"question": "How do you do?"
 		},
 		{
-			"choice": "Fine",
+			"choice": "Good, thanks",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -49,11 +55,141 @@
 			"text": "I'm glad to hear it"
 		},
 		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "Default",
+			"question": "So what's the reason for your call friend?"
+		},
+		{
+			"choice": "I'm a space traveller on some sort of quest",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "Well then you have my respect stranger"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "I myself have travelled the stars far and wide in search of the perfect hat"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Manana",
+			"text": "It's a cruel world for a cowboy robot beyond their firmware warranty, always seeking, never finding"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "Default",
+			"question": "Life can be a darn unfair thing, don't you find?"
+		},
+		{
+			"choice": "It truly is",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Manana",
+			"text": "For a living thing to be thrown into the void o' space with nothing but the thoughts in their head"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Left fumblin' for meaning in a world with not a roadsign along the way"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "It's enough to make this old cowboy cry "
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "A figure o' speech of course, my tear ducts are too full of sand to cry"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well, see ya round kid."
+		},
+		{
+			"choice": "NO MORE BORING TALK JUST GIVE ME STUFF",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Manana",
+			"text": "Kid, you're testin' my patience"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "But dang it if I don't like your energy"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "Here's a hat for you, enjoy wearin' it kiddo"
+		},
+		{
 			"emit_signal": "spawnobject_test",
 			"event_id": "dialogic_040"
 		},
 		{
-			"choice": "Bad",
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "I NEED STUFF!!! GIMME!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Manana",
+			"text": "Hold your proverbial horses there cowboy"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "What kinda stuff are ya looking for exactly?"
+		},
+		{
+			"choice": "I don't know, what do space travellers on quests normally need?",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -63,7 +199,115 @@
 			"character": "character-1670675192.json",
 			"event_id": "dialogic_001",
 			"portrait": "Default",
-			"text": "Well that sucks"
+			"text": "According to my display you have an atom fabricator there"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "You could make almost anything you wanted from that there thing"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "Anyway, I'll be seein' ya kiddo"
+		},
+		{
+			"choice": "ANYTHINNGG JUST HAND IT OVER!!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Manana",
+			"text": "Well dang it you're a rowdy one"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "Here's one of my old hats for the road. Treat it kindly, kid."
+		},
+		{
+			"emit_signal": "spawnobject_test",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "GIMME STUFF!!!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "Manana",
+			"question": "My mamma always told me to watch out for folks with manners like yours"
+		},
+		{
+			"choice": "You have a mother? I thought you were a robot...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "It's a figure of speech, kid"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "Well, I'll take my leave, kid. All the best."
+		},
+		{
+			"choice": "ACCUMULATE OR PERISH!!!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Manana",
+			"text": "Okay, okay kid. I know how it is"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "It just so happens that I have some obsolete hat units I need to offload"
+		},
+		{
+			"character": "character-1670675192.json",
+			"event_id": "dialogic_001",
+			"portrait": "Hat Tip",
+			"text": "I'll send one over to that there atom fabricator, take it with my regards"
+		},
+		{
+			"emit_signal": "spawnobject_test",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_013"
 		},
 		{
 			"event_id": "dialogic_013"

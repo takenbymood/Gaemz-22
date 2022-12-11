@@ -1,9 +1,9 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://CameraGimbal.cs" type="Script" id=1]
 [ext_resource path="res://InnerGimbal.cs" type="Script" id=2]
 [ext_resource path="res://Char.cs" type="Script" id=3]
-[ext_resource path="res://Textures/Sprites/placeholder.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Sprites/printer_1.png" type="Texture" id=4]
 [ext_resource path="res://CharacterMovement.cs" type="Script" id=5]
 [ext_resource path="res://Billboard.cs" type="Script" id=6]
 [ext_resource path="res://Textures/Sprites/goblin_small.png" type="Texture" id=7]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Textures/Skybox/starfield-17.png" type="Texture" id=13]
 [ext_resource path="res://Textures/Enc/fire.jpg" type="Texture" id=14]
 [ext_resource path="res://Textures/Sprites/computer.png" type="Texture" id=15]
+[ext_resource path="res://Textures/Sprites/poster.png" type="Texture" id=16]
 
 [sub_resource type="CylinderShape" id=5]
 
@@ -64,7 +65,7 @@ albedo_texture = ExtResource( 15 )
 
 [sub_resource type="CubeMesh" id=26]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=29]
 flags_transparent = true
 flags_unshaded = true
 albedo_texture = ExtResource( 4 )
@@ -92,6 +93,13 @@ material = SubResource( 21 )
 
 [sub_resource type="CylinderMesh" id=23]
 
+[sub_resource type="QuadMesh" id=27]
+
+[sub_resource type="SpatialMaterial" id=28]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 16 )
+
 [node name="Scene" type="Spatial"]
 
 [node name="DirectionalLight" type="OmniLight" parent="."]
@@ -107,7 +115,7 @@ script = ExtResource( 5 )
 max_speed = 30
 
 [node name="CollisionShape" type="CollisionShape" parent="Character"]
-transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 1.05652, -3.14867e-08 )
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 1.05652, -3.14867e-08 )
 shape = SubResource( 5 )
 
 [node name="CharacterController" type="Spatial" parent="Character"]
@@ -266,18 +274,30 @@ material/0 = null
 script = ExtResource( 10 )
 
 [node name="ObjectSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4199, 5.18888, -12.0271 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4199, 5.33795, -12.0271 )
 script = ExtResource( 11 )
 
 [node name="Billboard" type="Spatial" parent="ObjectSpawner"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.40723, 1.04091 )
 script = ExtResource( 6 )
 
 [node name="Mesh" type="MeshInstance" parent="ObjectSpawner/Billboard"]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.08075, 0 )
 mesh = SubResource( 3 )
 skeleton = NodePath("../../..")
-material/0 = SubResource( 10 )
+material/0 = SubResource( 29 )
+
+[node name="StaticBody" type="StaticBody" parent="ObjectSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.21675, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ObjectSpawner/StaticBody"]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 1.52668, 0 )
+shape = SubResource( 25 )
+
+[node name="MeshInstance" type="MeshInstance" parent="ObjectSpawner"]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -1.86673, 0 )
+mesh = SubResource( 26 )
+material/0 = null
 
 [node name="Floor" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.997955 )
@@ -323,6 +343,11 @@ color = Color( 0.733333, 0.466667, 0.152941, 1 )
 transform = Transform( -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0, 3, -2.05887, -0.0339413, 0.0633774 )
 mesh = SubResource( 23 )
 material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 6, 0, 0, 0, 4, 0, 0, 0, 1, -8.35356, 9.1655, -14.7057 )
+mesh = SubResource( 27 )
+material/0 = SubResource( 28 )
 
 [connection signal="dialogSignal" from="Character" to="DialogueController" method="_on_Character_dialogSignal"]
 [connection signal="lockControls" from="DialogueController" to="Character" method="_on_DialogueController_lockControls"]
